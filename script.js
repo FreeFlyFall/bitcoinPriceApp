@@ -34,7 +34,7 @@ button.addEventListener("click", function() {
 function requestPrice(currency) {
   var XHR = new XMLHttpRequest();
   XHR.onreadystatechange = function() {
-    if(XHR.readyState < 6 && XHR.status == 200) {
+    if(XHR.readyState == 4 && XHR.status == 200) {
       var data = JSON.parse(XHR.responseText);
       var priceString = data.bpi[currency].rate;
       var priceFloat = parseFloat(priceString.replace(/,/g, ''));
