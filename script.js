@@ -14,6 +14,7 @@ window.onload = function(){
 list.addEventListener("change", function(){
   var currency = list.value;
   requestPrice(currency);
+  input.value = currency;
 });
 
 input.addEventListener("keydown", function() {
