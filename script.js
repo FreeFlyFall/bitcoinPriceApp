@@ -40,12 +40,13 @@ function requestPrice(currency) {
       var priceFloat = parseFloat(priceString.replace(/,/g, ''));
       var priceRound = priceFloat.toFixed(2);
       var price = delimitNumbers(priceRound);
+      priceDisplay.textContent = price + " " + currency;
       console.clear();
       console.log(price);
-      priceDisplay.textContent = price + " " + currency;
     } else {
     }
   }
+
   if (currency === "USD" || currency === "EUR" || currency === "GBP"){
   var url = "https://api.coindesk.com/v1/bpi/currentprice.json";
   } else {
