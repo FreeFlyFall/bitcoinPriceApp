@@ -27,6 +27,7 @@ button.addEventListener("click", function() {
         var inputText = input.value.toUpperCase();
         requestPrice(inputText);
         button.blur();
+        list.value = inputText;
 })
 
 function requestPrice(currency) {
