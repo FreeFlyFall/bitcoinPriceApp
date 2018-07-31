@@ -41,18 +41,17 @@ function requestPrice(currency) {
   }
 
   fetch(url)
-  .then(function(res){
-    // console.log(res);
-    return res.json();
-  })
+  .then(checkRes)
   .then(function(data){
     var priceString = data.bpi[currency].rate;
       var priceFloat = parseFloat(priceString.replace(/,/g, ""));
       var priceRound = priceFloat.toFixed(2);
       var price = delimitNumbers(priceRound);
       priceDisplay.textContent = price + " " + currency;
-      console.clear();
-      console.log(price);
+      console.log("1 XBT = " + price + " " + currency);
+  })
+  .catch(function(err){
+    console.log(err);
   });
 }
 
@@ -61,4 +60,11 @@ function delimitNumbers(str) {
     return (b.charAt(0) > 0 && !(c || ".").lastIndexOf(".") ?
     b.replace(/(\d)(?=(\d{3})+$)/g, "$1,") : b) + c;
   });
+}
+
+function checkRes (res){
+  if(!res.ok){
+    throw Error(res.status);
+  }
+  return res.json();
 }
