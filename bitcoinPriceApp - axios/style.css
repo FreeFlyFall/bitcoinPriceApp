@@ -1,0 +1,58 @@
+/* General Style */
+body {
+    background-color:  #bcc4cf !important;
+    display: grid;
+    grid-template:
+    ". header header header ." 10em
+    ". price price price ." 7em
+    ". selector selector selector ." 4em
+    ". . text . ." 9em
+    ". . bodytext . ." auto
+    / 1fr 1fr 22.5em 1fr 1fr;
+    ;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+span {
+  color: green;
+}
+
+#input1:valid {
+  text-transform: uppercase;
+}
+/* End General Style */
+
+/* Container 1 */
+header {
+  grid-area: header;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+/* Container 2 */
+price {
+ grid-area: price;
+ display: flex;
+ justify-content: center;
+}
+
+/* Container 3 */
+selector {
+  grid-area: selector;
+  display: flex;
+  justify-content: center;
+}
+
+/* Container 4 */
+text {
+  grid-area: text;
+}
+
+/* Container 5 */
+bodytext {
+  grid-area: bodytext;
+}
