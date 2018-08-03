@@ -1,6 +1,6 @@
 # bitcoinPriceApp
 
-Viewable on CodePen: [Bitcoin Price App](https://codepen.io/FreeFly/pen/gjogom)
+The jQuery version is viewable on CodePen: [Bitcoin Price App](https://codepen.io/FreeFly/pen/gjogom)
 
 The app has 4 versions using:
 * XMLHttpRequests
