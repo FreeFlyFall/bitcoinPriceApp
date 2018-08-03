@@ -4,7 +4,7 @@ The jQuery version is viewable on CodePen: [Bitcoin Price App](https://codepen.i
 
 The app has 4 versions using:
 * XMLHttpRequests
-* Fetch XMLTttpRequests
+* Fetch XMLTHttpRequests
 * Jquery XMLHttpRequests
 * Axios XMLHttpRequests
 
