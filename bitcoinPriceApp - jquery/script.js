@@ -53,8 +53,7 @@ function requestPrice(currency) {
   if (currency === "USD" || currency === "EUR" || currency === "GBP"){
   var url = "https://api.coindesk.com/v1/bpi/currentprice.json";
   } else {
-  var url = "https://api.coindesk.com/v1/bpi/currentprice/" +
-  currency + "/.json";
+  var url = `https://api.coindesk.com/v1/bpi/currentprice/${currency}/.json`;
   }
 
   $.getJSON(url)
@@ -62,9 +61,11 @@ function requestPrice(currency) {
     var priceString = data.bpi[currency].rate;
     var priceFloat = parseFloat(priceString.replace(/,/g, ""));
     var priceRound = priceFloat.toFixed(2);
-    var price = delimitNumbers(priceRound);
-    $("#price").text(price + " " + currency);
-    console.log("1 XBT = " + price + " " + currency);
+    var price = `${delimitNumbers(priceRound)} ${currency}`;
+
+    $("#price").text(price);
+
+    console.log(`1 XBT = ${price}`);
     }
   );
 }
