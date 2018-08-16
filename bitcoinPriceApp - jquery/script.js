@@ -8,7 +8,7 @@ var button = $("button");
 
 // Initial get on load.
 window.onload = function(){
-  let currency = $(list).val();
+  var currency = $(list).val();
   requestPrice(currency);
 };
 
@@ -18,7 +18,7 @@ to it's value, request the BPI of that currency, and set the
 input field to display that currency's ISO code.
 */
 $(list).change(function(){
-  let currency = $(list).val();
+  var currency = $(list).val();
   requestPrice(currency);
   $(input).val(currency);
 });
@@ -37,7 +37,7 @@ in the input field, and request the BPI of that currency.
 Also remove the button's outline upon focus.
 */
 $(button).click(function() {
-  let currency = $(input).val().toUpperCase();
+  var currency = $(input).val().toUpperCase();
   $(list).val(currency);
   requestPrice(currency);
   button.blur();
@@ -47,7 +47,7 @@ $(button).click(function() {
 If the currency is supported by realtime updates, request info from
 the realtime updates url; otherwise, request info from the full url.
 Send get request for the JSON data using the custom url,
-reformat the data, display the BPI on the page and in the console.
+reformat the data, and display the BPI on the page and in the console.
 */
 function requestPrice(currency) {
   var url;
@@ -59,10 +59,10 @@ function requestPrice(currency) {
 
   $.getJSON(url)
   .done(function(data){
-    const priceString = data.bpi[currency].rate;
-    const priceFloat = parseFloat(priceString.replace(/,/g, ""));
-    const priceRound = priceFloat.toFixed(2);
-    const price = `${delimitNumbers(priceRound)} ${currency}`;
+    var priceString = data.bpi[currency].rate;
+    var priceFloat = parseFloat(priceString.replace(/,/g, ""));
+    var priceRound = priceFloat.toFixed(2);
+    var price = `${delimitNumbers(priceRound)} ${currency}`;
     $("#price").text(price);
     console.log(`1 XBT = ${price}`);
     }
