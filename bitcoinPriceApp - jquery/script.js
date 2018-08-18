@@ -1,10 +1,10 @@
 "use strict";
 
 // Select html elements using Jquery.
-var priceDisplay = $("#price");
-var list = $("#list");
-var input = $("#input1");
-var button = $("button");
+const priceDisplay = $("#price");
+const list = $("#list");
+const input = $("#input1");
+const button = $("button");
 
 // Initial get on load.
 window.onload = function(){
@@ -47,7 +47,7 @@ $(button).click(function() {
 If the currency is supported by realtime updates, request info from
 the realtime updates url; otherwise, request info from the full url.
 Send get request for the JSON data using the custom url,
-reformat the data, and display the BPI on the page and in the console.
+reformat the data, display the BPI on the page and in the console.
 */
 function requestPrice(currency) {
   var url;
