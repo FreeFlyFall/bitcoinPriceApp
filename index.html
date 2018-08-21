@@ -1,16 +1,18 @@
+<!-- VIEW IN FULL PAGE MODE FOR WORKING INPUT -->
 <html>
 
 <head>
     <!--     Mobile Viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <!-- Axios -->
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!--     BootStrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 </head>
 <!-- Built using AJAX -->
+
 <body>
     <!-- Container 1 -->
     <header>
@@ -26,7 +28,9 @@
     <!-- <Container 3 -->
     <selector>
         <div class="input">
-            <select class="custom-select" name="list" id="list" aria-label="Select">
+            <label for="list">ISO Code</label>
+            <input type="text" class="custom-select" name="list" id="list" list="datalist1" aria-label="Select" />
+            <datalist id="datalist1">
                 <option value="USD">USD - United States Dollar</option>
                 <option value="EUR">EUR - Euro</option>
                 <option value="GBP">GBP - British Pound Sterling</option>
@@ -194,30 +198,33 @@
                 <option value="ZMK">ZMK - Zambian Kwacha (pre-2013)</option>
                 <option value="ZMW">ZMW - Zambian Kwacha</option>
                 <option value="ZWL">ZWL - Zimbabwean Dollar</option>
-            </select>
+            </datalist>
         </div>
     </selector>
-
-    <!-- Container 4 -->
-    <text>
-        <label for="input" class="font-weight-bold">ISO currency code</label>
-        <div class="input-group mb-3" id="code-input">
-            <input type="text" class="form-control custom-select" placeholder="(e.g. USD)" aria-label="" aria-describedby="input" id="input1"
-                maxlength="3" required="required">
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button">Refresh</button>
-            </div>
-        </div>
-    </text>
 
     <!-- Container 5 -->
     <bodytext>
         <div class="text-justify">
-            <p>This Bitcoin Price App is <a href="https://www.coindesk.com/price/">Powered by CoinDesk</a>'s Bitcoin API. It displays real-time BPI data in USD, EUR, and GBP. Over 160 other currencies are updated once per hour. Use the selector to choose from a list of currencies, which are aphabetized by ISO code after the real-time listings, or enter a valid ISO 4217 currency code in the text-box to display the BPI.
+            <p>
+                This Bitcoin Price App is
+                <a href="https://www.coindesk.com/price/">Powered by CoinDesk</a>'s Bitcoin API. It displays real-time BPI data in USD, EUR, and GBP. Over 160 other
+                currencies are updated once per hour. Use the selector to choose from a list of currencies, which are aphabetized
+                by ISO code after the real-time listings, or enter a valid ISO 4217 currency code in the text-box to display
+                the BPI.
+            </p>
+            <div class="version-list">
+                    <strong>View on
+                        <a href="https://github.com/FreeFlyFall/bitcoinPriceApp" target="_blank">GitHub</a>
+                </div>
+                </strong>
+                </li>
+                </p>
+            </div>
         </div>
     </bodytext>
 
     </div>
+
     <script src="script.js"></script>
 </body>
 

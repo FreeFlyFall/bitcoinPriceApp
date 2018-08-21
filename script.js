@@ -7,8 +7,8 @@ const input = $("#input1");
 const button = $("button");
 
 // Initial get on load.
-window.onload = function(){
-  var currency = $(list).val();
+window.onload = function () {
+  var currency = "USD";
   requestPrice(currency);
 };
 
@@ -17,14 +17,20 @@ When the currency list is changed, set a variable "currency" equal
 to it's value, request the BPI of that currency, and set the
 input field to display that currency's ISO code.
 */
-$(list).change(function(){
-  var currency = $(list).val();
+$(list).change(function () {
+  var currency = $(list).val().substring(0, 3).toUpperCase();
+  console.log(currency);
   requestPrice(currency);
   $(input).val(currency);
 });
 
+// Reset search
+$(list).click(function () {
+  $(list).val("");
+})
+
 // When a key is pressed, if it is enter, click the button.
-$(input).keydown(function(e) {
+$(input).keydown(function (e) {
   if (e.keyCode === 13) {
     $(button).click();
   }
@@ -36,7 +42,7 @@ to a variable, change the currency in the list to be the currency
 in the input field, and request the BPI of that currency.
 Also remove the button's outline upon focus.
 */
-$(button).click(function() {
+$(button).click(function () {
   var currency = $(input).val().toUpperCase();
   $(list).val(currency);
   requestPrice(currency);
@@ -51,22 +57,22 @@ reformat the data, display the BPI on the page and in the console.
 */
 function requestPrice(currency) {
   var url;
-  if (currency === "USD" || currency === "EUR" || currency === "GBP"){
-  url = "https://api.coindesk.com/v1/bpi/currentprice.json";
+  if (currency === "USD" || currency === "EUR" || currency === "GBP") {
+    url = "https://api.coindesk.com/v1/bpi/currentprice.json";
   } else {
-  url = `https://api.coindesk.com/v1/bpi/currentprice/${currency}/.json`;
+    url = `https://api.coindesk.com/v1/bpi/currentprice/${currency}/.json`;
   }
 
   $.getJSON(url)
-  .done(function(data){
-    var priceString = data.bpi[currency].rate;
-    var priceFloat = parseFloat(priceString.replace(/,/g, ""));
-    var priceRound = priceFloat.toFixed(2);
-    var price = `${delimitNumbers(priceRound)} ${currency}`;
-    $("#price").text(price);
-    console.log(`1 XBT = ${price}`);
+    .done(function (data) {
+      var priceString = data.bpi[currency].rate;
+      var priceFloat = parseFloat(priceString.replace(/,/g, ""));
+      var priceRound = priceFloat.toFixed(2);
+      var price = `${delimitNumbers(priceRound)} ${currency}`;
+      $("#price").text(price);
+      console.log(`1 XBT = ${price}`);
     }
-  );
+    );
 }
 
 /*
@@ -74,8 +80,8 @@ Function for formatting a number to a comma style format
 with a thousands separator.
 */
 function delimitNumbers(str) {
-  return (str + "").replace(/\b(\d+)((\.\d+)*)\b/g, function(a, b, c) {
+  return (str + "").replace(/\b(\d+)((\.\d+)*)\b/g, function (a, b, c) {
     return (b.charAt(0) > 0 && !(c || ".").lastIndexOf(".") ?
-    b.replace(/(\d)(?=(\d{3})+$)/g, "$1,") : b) + c;
+      b.replace(/(\d)(?=(\d{3})+$)/g, "$1,") : b) + c;
   });
 }

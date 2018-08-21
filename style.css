@@ -4,9 +4,9 @@ body {
     display: grid;
     grid-template:
     ". header header header ." 10em
-    ". price price price ." 7em
-    ". selector selector selector ." 4em
-    ". . text . ." 9em
+    ". price price price ." 6em
+    ". selector selector selector ." 5em
+    ". . text . ." 2em
     ". . bodytext . ." auto
     / 1fr 1fr 22.5em 1fr 1fr;
     ;
