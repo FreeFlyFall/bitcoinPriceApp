@@ -3,8 +3,6 @@
 // Select html elements using Jquery.
 const priceDisplay = $("#price");
 const list = $("#list");
-const input = $("#input1");
-const button = $("button");
 
 // Initial get on load.
 window.onload = function () {
@@ -19,35 +17,13 @@ input field to display that currency's ISO code.
 */
 $(list).change(function () {
   var currency = $(list).val().substring(0, 3).toUpperCase();
-  console.log(currency);
   requestPrice(currency);
-  $(input).val(currency);
 });
 
 // Reset search
 $(list).click(function () {
   $(list).val("");
 })
-
-// When a key is pressed, if it is enter, click the button.
-$(input).keydown(function (e) {
-  if (e.keyCode === 13) {
-    $(button).click();
-  }
-});
-
-/*
-When the refresh button is clicked, assign it's uppercase value
-to a variable, change the currency in the list to be the currency
-in the input field, and request the BPI of that currency.
-Also remove the button's outline upon focus.
-*/
-$(button).click(function () {
-  var currency = $(input).val().toUpperCase();
-  $(list).val(currency);
-  requestPrice(currency);
-  button.blur();
-});
 
 /*
 If the currency is supported by realtime updates, request info from
