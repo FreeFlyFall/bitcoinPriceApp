@@ -18,12 +18,8 @@ input field to display that currency's ISO code.
 $(list).change(function () {
   var currency = $(list).val().substring(0, 3).toUpperCase();
   requestPrice(currency);
-});
-
-// Reset search
-$(list).click(function () {
   $(list).val("");
-})
+});
 
 /*
 If the currency is supported by realtime updates, request info from
